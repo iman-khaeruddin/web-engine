@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" href="/var/www/core/resources/style.css"/>
+</head>
+
+<body>
+<div class='header' th:include="header::header"></div>
+
+<!--<div th:include="letterhead::letterhead"></div>-->
+
+<center>
+    <h1>Letter of Quotations</h1>
+</center>
+
+<table>
+    <tr>
+        <td><b>To : </b>[[${data.getBuyer_company_name()}]]</td>
+    </tr>
+</table>
+<br>
+
+<table>
+    <tr>
+        <td class="left">
+            <b>Attn : </b> [[${data.getBuyer_pic_name()}]]
+        </td>
+        <td class="center">
+            <center><b>Email : </b> [[${data.getBuyer_pic_email()}]]</center>
+        </td>
+        <td class="right">
+            <b>Phone : </b> [[${data.getBuyer_pic_phone()}]]
+        </td>
+    </tr>
+</table>
+
+<p style="text-align: justify;">This Letter of Quotation is intended to solidify an agreement between two parties
+    identified here in. The nature
+    of the transaction is disctated by the service and facility listing's details published on the Mospaze marketplace,
+    which was viewed by the client (Buyer). Based on the details contained, the buyer has requested to engage in a Later
+    of Quotation for the service provided and described here in by the seller.</p>
+
+<p><b>Warehouse Details : </b></p>
+
+<div style="padding-left: 50px;">
+    <label style="padding-right: 30px;"> Warehouse Name </label> : [[${data.getWarehouse_id()}]] <br>
+    <label style="padding-right: 53px;"> Location Area </label> : [[${data.getWarehouse_location_area()}]] <br>
+    <label style="padding-right: 57px;"> Service Type </label> : [[${data.getWarehouse_service_type()}]] <br>
+    <label style="padding-right: 41px;"> Available Space </label> : [[${data.getWarehouse_available_space()}]] [[${data.getWarehouse_uom()}]]
+</div>
+
+<p><b>Request Details : </b></p>
+
+<!--Contract Period-->
+<div style="padding-bottom: 5px;">A. Contact Period</div>
+<table style="border-collapse: collapse;">
+    <tr style="border: 1px solid black">
+        <td style="border: 1px solid black; padding-left: 3px"><b>Start Date</b></td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getStart_date}]]</td>
+        <td style="border: 1px solid black; padding-left: 3px"><b>Period of Service</b></td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getEnd_date}]]</td>
+    </tr>
+</table>
+
+<br> <br>
+
+<!--Storage Services-->
+<div style="padding-bottom: 5px;">B. Storage Services</div>
+<table style="border-collapse: collapse;">
+    <tr style="border: 1px solid black">
+        <td style="border: 1px solid black">
+            <center><b>Service</b></center>
+        </td>
+        <td style="border: 1px solid black">
+            <center><b>Quantity</b></center>
+        </td>
+        <td style="border: 1px solid black">
+            <center><b>UoM</b></center>
+        </td>
+        <td style="border: 1px solid black">
+            <center><b>Rate UoM (Rp)</b></center>
+        </td>
+        <td style="border: 1px solid black">
+            <center><b>Remark</b></center>
+        </td>
+    </tr>
+    <tr style="border: 1px solid black">
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getWarehouse_storage_service()}]]</td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getWarehouse_capacity}]]</td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getWarehouse_uom}]]</td>
+        <td class="right" style="border: 1px solid black; padding-right: 3px">[[${data.getWarehouse_price}]]</td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.getWarehouse_remark}]]</td>
+    </tr>
+</table>
+
+<br> <br>
+
+<!--Additional Services-->
+<div style="padding-bottom: 5px;">C. Additional Services</div>
+<table style="border-collapse: collapse;">
+    <tr>
+        <th style="border: 1px solid black; text-align: center;">Service</th>
+        <th style="border: 1px solid black; text-align: center;">UoM</th>
+        <th style="border: 1px solid black; text-align: center;">Rate per UoM (Rp)</th>
+    </tr>
+    <tr th:each="data: ${data.getAdditional_service}" style="border: 1px solid black">
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.service_name}]]</td>
+        <td style="border: 1px solid black; padding-left: 3px">[[${data.uom}]]</td>
+        <td class="right" style="border: 1px solid black; padding-right: 3px">[[${data.price}]]</td>
+    </tr>
+</table>
+
+<div class='footer' th:include="footer::footer"></div>
+
+<div class="next-page">
+    <p><b>Standard Term of Service : </b></p>
+
+    <ol type="1">
+        <li>Price exclude applicable VAT and customs taxes.</li>
+        <li>Price exclude value added service and miscellanous fees.</li>
+        <li>Additional service must be informed in advance, and will be charged separately.</li>
+        <li>Read and comply with the privacy and website term of service of Mospaze.</li>
+        <li>Security deposit fee for service is Rp ___________________ and will be returned after all tenant's obligations
+            have been settled. Deposit fee must be paid immediately when your order is confirmed.
+        </li>
+        <li>Minimum contract period of service is for 1 (one) month.</li>
+        <li>Only sellable and good condition product are accepted into Mospaze's Warehouse.</li>
+        <li>Customer are not allowed to give tips/cash/extra pocket money to any Mospaze's staff within Mospaze's premises
+            or Mospaze's partner premises.
+        </li>
+        <li>Payment term for 30 days from invoice date. Customer required to settle all outstanding invoices/bill before
+            vacating Mospaze's Warehouse.
+        </li>
+    </ol>
+
+    <table>
+        <tr>
+            <td>
+                <ul style="list-style-type:square;">
+                    <li>Bank Transafer</li>
+                </ul>
+            </td>
+            <td style="border: 1px solid black; width:75%">BANK CENTRAL ASIA CABANG SUNTER PRIMA <br>
+                659 056 0888 <br> MAJU INDONESIA SARANA AGRO PT
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b>Signature</b>
+
+    <br><br>
+
+    <table>
+        <tr>
+            <td class="left" style="padding-left: 40px;">
+                Prepared By,
+            </td>
+            <td class="left" style="padding-left: 350px;">
+                Confirmed & Approved By,
+            </td>
+        </tr>
+        <tr>
+            <td class="left" style="padding-left: 43px;">
+                MOSPAZE
+            </td>
+            <td class="left" style="padding-left: 375px;">
+                Client ("Buyer")
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br><br><br><br>
+
+    <table>
+        <tr style="border: 1px solid black">
+            <td class="left">
+                PIC Name : [[${data.getAdmin_name()}]]
+            </td>
+            <td class="right" style="padding-right: 125px;">
+                PIC Name :
+            </td>
+        </tr>
+        <tr style="border: 1px solid black">
+            <td class="left">
+                Position : [[${data.getAdmin_position()}]]
+            </td>
+            <td class="right" style="padding-right: 137px;">
+                Position :
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class='footer' th:include="footer::footer"></div>
+
+<div class="next-page">
+    <center>
+        <b>ATTACHMENT</b>
+    </center>
+    <br>
+    <b>Warehouse Overview:</b>
+    <br><br>
+    <table>
+        <tr>
+            <td>
+                <center><img class="logo" src="/var/www/core/img/square1.jpg" alt="logo"></center>
+            </td>
+            <td>
+                <center><img class="logo" src="/var/www/core/img/square2.jpg" alt="logo"></center>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <table>
+        <tr>
+            <td>
+                <center><img class="logo" src="/var/www/core/img/square3.jpg" alt="logo"></center>
+            </td>
+            <td>
+                <center><img class="logo" src="/var/www/core/img/square4.jpg" alt="logo"></center>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <b>Facilities:</b>
+    <br>
+    <ul th:each="data: ${data.getWarehouse_facilities}">
+        <li>[[${data.features_name}]]</li>
+    </ul>
+</div>
+
+<div class='footer' th:include="footer::footer"></div>
+</body>
+
+</html>

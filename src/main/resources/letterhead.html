@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="letterhead">
+    <table>
+        <tr class="address-block">
+            <td></td>
+            <td class="bottom right">
+                <strong>Thymeleaf Example Project</strong><br>
+                Thymeleaf Street 42<br>
+                12345 Thymecity<br>
+                <br>
+                <b>Phone:</b> [[${data.getBuyer_pic_phone()}]]<br>
+                <b>E-Mail:</b> [[${data.getBuyer_pic_email()}]]<br>
+            </td>
+        </tr>
+        <tr class="address-block">
+            <td class="bottom">
+                <strong>[[${data.getBuyer_pic_name()}]]</strong><br>
+                [[${data.getWarehouse_location_area()}]]<br>
+            </td>
+            <td class="bottom right">
+                Thymecity, 01. January 2018
+            </td>
+        </tr>
+    </table>
+    <hr>
+</div>

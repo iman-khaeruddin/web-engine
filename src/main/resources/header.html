@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="header">
+    <table>
+        <tr>
+            <td class="left">[[${data.getBooking_no()}]] <br> [[${data.getDate()}]]</td>
+            <td class="right"><img class="logo" src="/var/www/core/resources/logo.png" alt="logo"></td>
+        </tr>
+    </table>
+</div>
