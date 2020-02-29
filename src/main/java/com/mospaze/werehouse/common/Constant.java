@@ -17,6 +17,7 @@ public class Constant {
     public static final String EMAIL_WORDING_QUOTATION_CREATE_BUYER = "EMAIL_WORDING_QUOTATION_CREATE_BUYER";
     public static final String SMS_WORDING_BOOKING_WAREHOUSE = "SMS_WORDING_BOOKING_WAREHOUSE";
     public static final String NEXMO_API_KEY = "NEXMO_API_KEY";
+    public static final String SENDGRID_API_KEY = "SENDGRID_API_KEY";
     public static final String NEXMO_API_SECRET = "NEXMO_API_SECRET";
     public static final String SMS_WORDING_OTP = "SMS_WORDING_OTP";
     public static final String EMAIL_WORDING_RESET_PASSWORD = "EMAIL_WORDING_RESET_PASSWORD";

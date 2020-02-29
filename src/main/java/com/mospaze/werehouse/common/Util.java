@@ -179,7 +179,7 @@ public class Util {
             Content content = new Content("text/plain", email.get("content"));
             Mail mail = new Mail(from, subject, to, content);
 
-            SendGrid sg = new SendGrid("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");
+            SendGrid sg = new SendGrid(String.valueOf(Constant.configProperties.get(Constant.SENDGRID_API_KEY)));
 
             Request request = new Request();
             request.setMethod(Method.POST);
@@ -218,7 +218,7 @@ public class Util {
             mailSettings.setBccSettings(bccSettings);
             mail.setMailSettings(mailSettings);
 
-            SendGrid sg = new SendGrid("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");
+            SendGrid sg = new SendGrid(String.valueOf(Constant.configProperties.get(Constant.SENDGRID_API_KEY)));
 
             Request request = new Request();
             request.setMethod(Method.POST);
